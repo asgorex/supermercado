@@ -1,0 +1,12 @@
+@model Producto
+<form method="post" asp-action="Update" asp-controller="Producto">
+    <input type="hidden" asp-for="IdProducto" />
+    <p>
+        Nombre
+    </p>
+    <input type="text" asp-for="Nombre" />
+    <p>Precio</p>
+    <input type="number" asp-for="Precio" />
+
+    <button type="submit">Guardar</button>
+</form>
