@@ -1,0 +1,41 @@
+@model IEnumerable<Producto>
+
+@if (!Model.Any())
+{
+    <div>No hay productos en la base de datos</div>
+}
+else
+{
+    <table border=1>
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Borrar</th>
+            <th>Actualizar</th>
+        </thead>
+        <tbody>
+            @foreach(Producto item in Model)
+            {
+                <tr>
+                    <td>@item.IdProducto</td>
+                    <td>@item.Nombre</td>
+                    <td>@item.Precio</td>
+                    <td>
+                        <form asp-action="Borrar" asp-controller="Producto" asp-route-id="@item.IdProducto" method="post">
+                            <button type="submit">Borrar</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a
+                            asp-action="Editar"
+                            asp-controller="Producto"
+                            asp-route-id=@item.IdProducto>
+                            Editar    
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
